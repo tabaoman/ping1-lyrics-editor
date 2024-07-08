@@ -40,6 +40,7 @@ export default {
     confirmOverwriteText: '覆盖当前载入的歌词?'
   },
   text: {
-    speed: '<strong>{0}</strong> 字每分钟'
+    speed: ' 字每分钟',
+    subtitle: '请放心，不会有数据上传到网上'
   }
 }

@@ -44,7 +44,7 @@
 
     <q-page-sticky position="top-right" :offset="[16, 24]">
       <q-card style="border-radius: 60px;">
-        <div class="q-pa-sm" v-html="$t('text.speed', [ speed ])" />
+        <div class="q-pa-sm" v-html="speed" />
       </q-card>
     </q-page-sticky>
     <q-page-sticky position="bottom-right" :offset="[16, 16]">
@@ -80,11 +80,12 @@ const audioData = computed(() => {
 })
 const lyrics = ref(null);
 const speed = computed(() => {
-  if (!lyrics.value || lyrics.value.length === 0 || selected.value < 0 || selected.value >= lyrics.value.length || !audioRef.value.currentTime)
-    return '0';
-  const s = countSpeed(lyrics.value, selected.value, audioRef.value.currentTime);
-  console.log(s);
-  return s;
+  let s = 0;
+  if (!lyrics.value || lyrics.value.length === 0 || selected.value < 0 || selected.value >= lyrics.value.length || !audioRef.value.currentTime) {
+  } else {
+    s = countSpeed(lyrics.value, selected.value, audioRef.value.currentTime);
+  }
+  return `<strong>${s}</strong>` + ' ' + t('text.speed');
 });
 
 const key = (evt) => {

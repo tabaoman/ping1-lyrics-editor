@@ -40,6 +40,7 @@ export default {
     confirmOverwriteText: 'Overwrite the existing lyrics?'
   },
   text: {
-    speed: '<strong>{0}</strong> word(s) per min'
+    speed: ' word(s) per min',
+    subtitle: 'Take it easy. Your data won\'t be uploaded.'
   }
 }
