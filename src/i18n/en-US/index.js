@@ -24,10 +24,11 @@ export default {
   shortcut: {
     title: 'Shortcuts',
     text: '<div>' +
-      '<div class="row items-center q-my-xs"><span class="mac-key">↑</span>&nbsp;&nbsp;Play/pause audio</div>' +
+      '<div class="row items-center q-my-xs"><span class="mac-key">↓</span>&nbsp;&nbsp;Play/pause audio</div>' +
       '<div class="row items-center q-my-xs"><span class="mac-key">←</span>&nbsp;&nbsp;5 seconds backward</div>' +
       '<div class="row items-center q-my-xs"><span class="mac-key">→</span>&nbsp;&nbsp;5 seconds forward</div>' +
       '<div class="row items-center q-my-xs"><span class="mac-space">&nbsp;</span>&nbsp;&nbsp;Make time tag</div>' +
+      '<div class="row items-center q-my-xs"><span class="mac-key">↑</span>&nbsp;&nbsp;Back to the last line</div>' +
       '<div class="row items-center q-my-xs"><span class="mac-key">e</span>&nbsp;&nbsp;Edit current line</div>' +
       '<div class="row items-center q-my-xs"><span class="mac-key">↵</span>&nbsp;&nbsp;Submit edit</div>' +
       '<div class="row items-center q-my-xs"><span class="mac-key">i</span>&nbsp;&nbsp;Insert a new line</div>' +

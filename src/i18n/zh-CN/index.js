@@ -24,10 +24,11 @@ export default {
   shortcut: {
     title: '热键列表',
     text: '<div>' +
-      '<div class="row items-center q-my-xs"><span class="mac-key">↑</span>&nbsp;&nbsp;播放/暂停音频</div>' +
+      '<div class="row items-center q-my-xs"><span class="mac-key">↓</span>&nbsp;&nbsp;播放/暂停音频</div>' +
       '<div class="row items-center q-my-xs"><span class="mac-key">←</span>&nbsp;&nbsp;向前 5 秒</div>' +
       '<div class="row items-center q-my-xs"><span class="mac-key">→</span>&nbsp;&nbsp;向后 5 秒</div>' +
       '<div class="row items-center q-my-xs"><span class="mac-space">&nbsp;</span>&nbsp;&nbsp;记录时间</div>' +
+      '<div class="row items-center q-my-xs"><span class="mac-key">↑</span>&nbsp;&nbsp;回到上一行</div>' +
       '<div class="row items-center q-my-xs"><span class="mac-key">e</span>&nbsp;&nbsp;编辑当前行</div>' +
       '<div class="row items-center q-my-xs"><span class="mac-key">↵</span>&nbsp;&nbsp;提交当前行编辑</div>' +
       '<div class="row items-center q-my-xs"><span class="mac-key">i</span>&nbsp;&nbsp;插入新行</div>' +

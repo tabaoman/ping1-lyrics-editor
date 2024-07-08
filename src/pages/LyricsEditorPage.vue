@@ -78,6 +78,8 @@ const key = (evt) => {
   evt.preventDefault();
   if (evt.key === ' ') {
     set();
+  } else if (evt.key === 'd' || evt.key === 'D') {
+    remove();
   } else if (evt.key === 'e' || evt.key === 'E') {
     edit();
   } else if (evt.key === 'm' || evt.key === 'M') {
@@ -87,6 +89,8 @@ const key = (evt) => {
   } else if (evt.keyCode === 39) {
     audioRef.value.currentTime += 5;
   } else if (evt.keyCode === 38) {
+    back();
+  } else if (evt.keyCode === 40) {
     if (!audioRef.value) return;
     if (playing.value) {
       audioRef.value.pause();
@@ -100,6 +104,12 @@ const set = () => {
   if (!lyrics.value[selected.value]) return;
   lyrics.value[selected.value].ts = cur.value;
   selected.value++;
+}
+const back = () => {
+  if (selected.value <= 0) return;
+  const t = lyrics.value[selected.value - 1].ts;
+  audioRef.value.currentTime = t / 1000;
+  selected.value--;
 }
 const edit = () => {
   editIdx.value = selected.value;

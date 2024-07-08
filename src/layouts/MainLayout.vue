@@ -3,7 +3,7 @@
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title>
-          Lyrics Editor Online
+          Lyrics Editor Online&nbsp;&nbsp;<span class="text-caption">Take easy. Your data won't be uploaded.</span>
         </q-toolbar-title>
         <q-space />
         <a href="https://www.buymeacoffee.com/tabaoman" target="_blank" class="row items-center"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coke&slug=tabaoman&button_colour=FFDD00&font_colour=ff0000&font_family=Cookie&outline_colour=ff0000&coffee_colour=000000" /></a>
