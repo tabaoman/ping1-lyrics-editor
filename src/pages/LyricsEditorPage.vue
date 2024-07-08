@@ -42,6 +42,11 @@
       </q-card>
     </q-dialog>
 
+    <q-page-sticky position="top-right" :offset="[16, 24]">
+      <q-card style="border-radius: 60px;">
+        <div class="q-pa-sm" v-html="$t('text.speed', [ speed ])" />
+      </q-card>
+    </q-page-sticky>
     <q-page-sticky position="bottom-right" :offset="[16, 16]">
       <q-btn round :disable="!lyrics || lyrics.length === 0" icon="file_download" @click="download">
         <q-tooltip><div v-html="$t('btnHints.download')"/></q-tooltip>
@@ -56,6 +61,7 @@ import { useI18n } from "vue-i18n";
 import parseLrc from '../fn/parseLrc';
 import parseText from '../fn/parseText';
 import exportLrc from '../fn/exportLrc';
+import countSpeed from '../fn/countSpeed';
 import FileUpload from "components/FileUpload.vue";
 import LyricsLine from "components/LyricsLine.vue";
 
@@ -73,6 +79,13 @@ const audioData = computed(() => {
   return URL.createObjectURL(audio.value);
 })
 const lyrics = ref(null);
+const speed = computed(() => {
+  if (!lyrics.value || lyrics.value.length === 0 || selected.value < 0 || selected.value >= lyrics.value.length || !audioRef.value.currentTime)
+    return '0';
+  const s = countSpeed(lyrics.value, selected.value, audioRef.value.currentTime);
+  console.log(s);
+  return s;
+});
 
 const key = (evt) => {
   evt.preventDefault();

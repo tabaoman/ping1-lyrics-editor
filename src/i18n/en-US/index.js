@@ -38,5 +38,8 @@ export default {
   },
   msg: {
     confirmOverwriteText: 'Overwrite the existing lyrics?'
+  },
+  text: {
+    speed: '<strong>{0}</strong> word(s) per min'
   }
 }

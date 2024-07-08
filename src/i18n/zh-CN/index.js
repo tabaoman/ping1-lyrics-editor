@@ -38,5 +38,8 @@ export default {
   },
   msg: {
     confirmOverwriteText: '覆盖当前载入的歌词?'
+  },
+  text: {
+    speed: '<strong>{0}</strong> 字每分钟'
   }
 }
