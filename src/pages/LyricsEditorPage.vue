@@ -21,11 +21,20 @@
         <q-tooltip><div v-html="$t('btnHints.margeLines')"/></q-tooltip>
       </q-btn>
       <q-separator vertical class="q-mx-sm" />
+      <q-input dense outlined type="number" :label="$t('text.offset')" @focus="bind(false)" @blur="bind(true)" v-model="offset">
+        <template v-slot:after>
+          <q-btn dense flat icon="vertical_align_top" @click="move"
+                 :style="`transform: rotate(${offset < 0 ? '-90' : '90'}deg);`">
+            <q-tooltip>{{ $t('btnHints.offsetTime') }}</q-tooltip>
+          </q-btn>
+        </template>
+      </q-input>
+      <q-separator vertical class="q-mx-sm" />
       <q-btn dense flat :disable="!lyrics || lyrics.length === 0" icon="file_download" @click="download">
         <q-tooltip><div v-html="$t('btnHints.download')"/></q-tooltip>
       </q-btn>
     </div>
-    <div class="col-grow q-mb-xl">
+    <div class="col-grow q-mt-md q-mb-xl">
       <LyricsLine v-for="(line, i) in lyrics" :key="`lrc-${i}`" :id="`lrc-${i}`"
                   :in-edit="editIdx === i"
                   :now="selected === i" :cur="cur" :class="i === selected - 1 ? 'last-highlight' : ''"
@@ -70,6 +79,7 @@ const cur = ref(0);
 const lrc = ref(null);
 const text = ref(null);
 const audio = ref(null);
+const offset = ref(null);
 const audioRef = ref(null);
 const editIdx = ref(-1);
 const selected = ref(0);
@@ -78,7 +88,7 @@ const audioData = computed(() => {
   if (!audio.value) return null;
   return URL.createObjectURL(audio.value);
 })
-const lyrics = ref(null);
+const lyrics = ref([]);
 const speed = computed(() => {
   let s = 0;
   if (!lyrics.value || lyrics.value.length === 0 || selected.value < 0 || selected.value >= lyrics.value.length || !audioRef.value.currentTime) {
@@ -125,6 +135,10 @@ const back = () => {
   audioRef.value.currentTime = t / 1000;
   selected.value--;
 }
+const bind = (b) => {
+  if (b) document.addEventListener('keydown', key);
+  else document.removeEventListener('keydown', key);
+}
 const edit = () => {
   editIdx.value = selected.value;
 }
@@ -137,6 +151,15 @@ const merge = () => {
     lyrics.value[selected.value].text += ' ';
   lyrics.value[selected.value].text += lyrics.value[selected.value + 1].text;
   lyrics.value.splice(selected.value + 1, 1);
+}
+const move = () => {
+  if (!offset.value) return;
+  const o = offset.value * 1000;
+  for (const line of lyrics.value) {
+    line.ts += o;
+    if (line.ts < 0) line.ts = 0;
+  }
+  offset.value = null;
 }
 const insert = () => {
   if (!lyrics.value) return;
@@ -188,11 +211,7 @@ watch(() => text.value, (v) => {
   fr.readAsText(v);
 });
 watch(() => editIdx.value, (v) => {
-  if (v >= 0) {
-    document.removeEventListener('keydown', key);
-  } else {
-    document.addEventListener('keydown', key);
-  }
+  bind(v < 0);
 });
 watch(() => selected.value, (v) => {
   const line = document.getElementById(`lrc-${v}`);

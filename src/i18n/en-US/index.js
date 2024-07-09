@@ -9,6 +9,7 @@ export default {
     download: 'Download LRC file',
     insertLine: 'Insert a new line<br>Hotkey: <span class="mac-key">i</span>',
     margeLines: 'Merge with the next line<br>Hotkey: <span class="mac-key">m</span>',
+    offsetTime: 'Apply the offset to the all lines',
     removeLine: 'Remove current line<br>Hotkey: <span class="mac-key">d</span>',
     textImport: 'Editor will separate the text into sentences',
   },
@@ -40,6 +41,7 @@ export default {
     confirmOverwriteText: 'Overwrite the existing lyrics?'
   },
   text: {
+    offset: 'Offset (sec)',
     speed: ' word(s) per min',
     subtitle: 'Take it easy. Your data won\'t be uploaded.'
   }

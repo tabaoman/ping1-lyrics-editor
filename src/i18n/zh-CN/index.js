@@ -9,6 +9,7 @@ export default {
     download: '下载LRC文件',
     insertLine: '插入新行到下面<br>热键: <span class="mac-key">i</span>',
     margeLines: '与下一行合并<br>Hotkey: <span class="mac-key">m</span>',
+    offsetTime: '整体移动时间轴',
     removeLine: '删除当前行<br>热键: <span class="mac-key">d</span>',
     textImport: '编辑器会把文本分割成句子',
   },
@@ -40,6 +41,7 @@ export default {
     confirmOverwriteText: '覆盖当前载入的歌词?'
   },
   text: {
+    offset: '偏移量 (秒)',
     speed: ' 字每分钟',
     subtitle: '请放心，不会有数据上传到网上'
   }
